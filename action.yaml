@@ -1,0 +1,30 @@
+name: 'Helm Deployment to EKS'
+author: 'Samuel Chow'
+description: 'Github Action for deploying applications to a EKS cluster using Helm 3 and an AWS access key (no kubeconfig).'
+branding:
+  color: white
+  icon: anchor
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.command }}
+inputs:
+  aws_access_key_id:
+    description: 'The AWS_ACCESS_KEY_ID with permissions to access EKS.'
+    required: true
+  aws_secret_access_key:
+    description: 'The AWS_ACCESS_KEY_SECRET with permissions to access EKS.'
+    required: true
+  aws_region:
+    description: 'The region hosting EKS.'
+    required: true
+  cluster_name:
+    description: 'The name of EKS cluster.'
+    required: true
+  command:
+    description: 'Shell commands to run.'
+    required: true
+outputs:
+  result:
+    description: 'The output of the command execution.'

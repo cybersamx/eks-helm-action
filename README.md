@@ -1,8 +1,6 @@
 # eks-helm-action
 
-Github Action for deploying applications to a EKS cluster. This Action has a container with `kubectl` and `helm` installed and kubeconfig configured by the AWS access key you provided - yep, no more messing around with kubeconfig.
-
-I need something somewhat specific to a Github Actions CI run and just want to pass the AWS access key credentials (easier to deal with) instead of kubeconfig. So I combine [ianbelcher/eks-kubectl-action](https://github.com/ianbelcher/eks-kubectl-action) and [koslib/helm-eks-action](https://github.com/koslib/helm-eks-action) actions in this action.
+Needed something somewhat specific to a Github Actions CI run for a project. Just want to pass the AWS access key credentials (easier to deal with) instead of tinkering with kubeconfig. This project combines [ianbelcher/eks-kubectl-action](https://github.com/ianbelcher/eks-kubectl-action) and [koslib/helm-eks-action](https://github.com/koslib/helm-eks-action) actions to deploy applications to an EKS cluster using just AWS access key. This Action has a container with `kubectl` and `helm`.
 
 ## Policy for IAM User
 
@@ -47,7 +45,6 @@ jobs:
           cluster_name: ch-dev-eks
           command: kubectl config current-context && helm -h
 ```
-
 
 ## Credits
 

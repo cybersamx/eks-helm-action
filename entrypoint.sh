@@ -11,5 +11,8 @@ echo "Updated kubeconfig with the AWS credentials."
 aws eks --region "$INPUT_AWS_REGION" update-kubeconfig --name "$INPUT_CLUSTER_NAME"
 
 echo "Running commands..."
+echo "${@}"
 result=$(sh -c "${@}")
+exitcode="${?}"
 echo "::set-output name=result::${result}"
+exit "${exitcode}"

@@ -14,5 +14,6 @@ echo "Running commands..."
 echo "${@}"
 result=$(sh -c "${@}")
 exitcode="${?}"
+echo "Exitcode: ${exitcode}"
 echo "::set-output name=result::${result}"
 exit "${exitcode}"
